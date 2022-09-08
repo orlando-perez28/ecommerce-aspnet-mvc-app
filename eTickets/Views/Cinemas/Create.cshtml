@@ -13,7 +13,7 @@
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group text-center">
-                        <img class="border-info rounded-circle" style="max-width: 150px" id="profilePicture" />
+                        <img class="border-info rounded-circle" style="max-width: 150px" id="profilePicturePrev" />
                     </div>
                     <div class="form-group">
                         <label asp-for="Logo" class="control-label"></label>
@@ -40,11 +40,11 @@
     </div>
 </div>
 
-@*@section Scripts{
+@section Scripts{
     <script>
-        $("#profilePicture").on("change", function(){
-            var output = document.getElementById('profilePicture');
+        $("#Logo").on("change", function () {
+            var output = document.getElementById('profilePicturePrev');
             output.src = $(this).val();
         })
     </script>
-    }*@
+    }

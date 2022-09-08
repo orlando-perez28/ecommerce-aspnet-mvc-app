@@ -2,6 +2,7 @@
 using eTickets.Data.Services;
 using eTickets.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace eTickets.Controllers
@@ -33,8 +34,14 @@ namespace eTickets.Controllers
             return View(movie);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var movieDropDowns = await _moviesService.GetMovieDropDownsValues();
+
+            ViewBag.CinemaId = new SelectList(movieDropDowns.Cinemas, "Id", "Name");
+            ViewBag.ActorIds = new SelectList(movieDropDowns.Actors, "Id", "FullName");
+            ViewBag.ProducerId = new SelectList(movieDropDowns.Producers, "Id", "FullName");
+            
             return View();
         }
 
