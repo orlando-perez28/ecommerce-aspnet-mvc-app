@@ -7,6 +7,7 @@ namespace eTickets.Models;
 
 public class MovieViewModel
 {
+    public int Id { get; set; }
     [Required(ErrorMessage = "Price is required")]
     [Display(Name = "Price in $")]
     public double Price { get; set; }
