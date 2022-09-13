@@ -8,6 +8,7 @@ namespace eTickets.Models;
 public class Movie : IEntityBase
 {
     [Key]
+    //[DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int Id { get; set; }
     public double Price { get; set; }
     public string Name { get; set; }
