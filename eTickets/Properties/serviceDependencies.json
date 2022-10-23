@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "eTicketKey"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:EcommerceCnn",
+      "dynamicId": null
+    }
+  }
+}

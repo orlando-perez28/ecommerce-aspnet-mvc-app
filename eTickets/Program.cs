@@ -2,8 +2,12 @@ using eTickets.Data;
 using eTickets.Data.Cart;
 using eTickets.Data.Services;
 using Microsoft.EntityFrameworkCore;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("eTicketKey"));
+//builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -17,6 +21,7 @@ builder.Services.AddScoped<IMoviesService, MoviesService>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sh => ShoppingCart.GetShoppingCart(sh));
 builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -38,6 +43,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 
 AppDbInitializer.Seed(app);
 
